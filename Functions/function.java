@@ -7,6 +7,8 @@ public class function {
 
     return avg;
 
+  
+
   }
 
   public static boolean isEven(int n) {
