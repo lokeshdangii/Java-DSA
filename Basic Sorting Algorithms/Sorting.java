@@ -119,6 +119,9 @@ public class Sorting {
     
 
     printArray(arr);
+    
    } 
 }  
+
+
 
