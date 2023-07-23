@@ -52,8 +52,7 @@ public class ButterFly {
 
 
     public static void main(String args[]){
-        butterFlyPattern(4);
-        // lowerButterfly(4);
+        butterFlyPattern(7);
     }
 
 }
