@@ -16,7 +16,7 @@ public class PrintSubArray {
                   for(int k = start; k<=end; k++){  // print
                     System.out.print(numbers[k] + " "); // Subarrays
                     sum += numbers[k];
-                   
+              
                   }
                     totalSum += sum;
                   System.out.println();
