@@ -16,7 +16,7 @@ public class Sorting {
             for(int j=0; j<arr.length-1 - turn;j++){
                 if(arr[j]>arr[j+1]){ // for descending change the sign(>)
                     // swapping
-                    // swap++;
+                    swap++;
                  
                     int temp = arr[j];
                     arr[j] = arr[j+1];
@@ -25,11 +25,11 @@ public class Sorting {
                     System.out.println("if condition is working");
                    // System.out.println("value of swap" + " "+ swap);
                 }    
-                // if(swap==0){
-                //     System.out.println("No Swapping");
-                //     break;
+                if(swap==0){
+                    System.out.println("No Swapping");
+                    break;
                   
-                //  } 
+                 } 
                  }   
                   
         }
@@ -97,11 +97,11 @@ public class Sorting {
         }
     }
    public static void main(String args[]){
-  // int arr[] = {5, 4, 3, 1, 2};
-   //int arr[] = {1, 2, 3, 4, 5};
+  int arr[] = {5, 4, 3, 1, 2};
+//    int arr[] = {1, 2, 3, 4, 5};
    //int arr[] = {1, 4, 1, 3, 2, 4, 3, 7};
-     int arr[] = {3,6,2,1,8,7,4,5,3,1};
-   // bubbleSort(arr);
+    //  int arr[] = {3,6,2,1,8,7,4,5,3,1};
+   bubbleSort(arr);
    // selectionSort(arr);
    // insertionSort(arr);
    //  countingSort(arr);
@@ -119,7 +119,7 @@ public class Sorting {
     
 
     printArray(arr);
-    
+     
    } 
 }  
 
