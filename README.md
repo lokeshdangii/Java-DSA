@@ -4,7 +4,7 @@ Welcome to my Java Learning Repository! This repository documents my journey in 
 
 ## My Learning
 
-- Demonstrated understanding of fundamental Java concepts and syntax.
+- Explored understanding of fundamental Java concepts and syntax.
 - Understood data structures like arrays and 2D arrays.
 - Implemented sorting and searching algorithms for effective problem-solving.
 - Explored advanced techniques such as backtracking, recursion, and bit manipulation.
