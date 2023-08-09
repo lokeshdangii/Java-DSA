@@ -1,6 +1,6 @@
 public class Zero_OneTriangle {
 
-    public static void ZeroOneTriangle(int n){
+    public static void zeroOneTriangle(int n){
         
 
         for(int i=1;i<=n;i++){
