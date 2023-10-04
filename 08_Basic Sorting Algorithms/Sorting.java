@@ -12,7 +12,7 @@ public class Sorting {
 
     public static void bubbleSort(int arr[]){
         for(int turn = 0; turn<arr.length -1; turn++){  // turns 0 to n-2
-            int swap = 0;
+            int swap = 0; 
             for(int j=0; j<arr.length-1 - turn;j++){
                 if(arr[j]>arr[j+1]){ // for descending change the sign(>)
                     // swapping
