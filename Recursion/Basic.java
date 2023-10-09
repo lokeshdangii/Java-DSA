@@ -1,6 +1,5 @@
 
-
-
+// Recursion is a method of solving a computation problem where solution depened on solutions to smaller instances of the same problem.
 
 public class Basic {
 
@@ -190,7 +189,7 @@ public class Basic {
         // System.out.print(index);
        // System.out.println(optimizedPower(5, 10));
 
-        // String str = "appnnacollege";
+        // String str = "lokeshdangi";
         // removeDupicates(str, 0, new StringBuilder(""), new boolean[26]);
         // System.out.println(tilingProblem(4 ));
         printBinString(3, 0, "");
