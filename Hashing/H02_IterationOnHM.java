@@ -14,7 +14,7 @@ public class H02_IterationOnHM{
         hm.put("Rohit",45);  
 
 
-        // Iterate
+        // Iterating on HashMap
 
         // .keySet() gives collection of keys of hm
         Set<String> keys = hm.keySet();
