@@ -30,10 +30,7 @@ public class H05_Frequncies {
         while(i.hasNext()){
             int ele = i.next();
             System.out.println(ele + " " + hm.get(ele));
-        }
-
-        
-        
+        }        
     }
 
     public static void main(String args[]){
