@@ -1,5 +1,6 @@
 // HashSet in Java
 // HashSet is used to store only a set of keys, it uses hashing(Hashtables to store those keys)
+// HashSet is the implemented by HashMap in which keys are the keys of Set whereas values have dummy values.
 
 import java.util.*;
 import java.util.HashSet;
