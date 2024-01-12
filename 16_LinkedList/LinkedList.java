@@ -261,6 +261,65 @@ public class LinkedList {
         
     }
 
+    private Node getMid(Node head) {
+        Node slow = head;
+        Node fast = head.next;
+
+        while(fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        return slow; //mid node
+    }
+
+    private Node merge(Node head1, Node head2) {
+        Node mergedLL = new Node(-1);
+        Node temp = mergedLL;
+
+        while(head1 != null && head2 != null) {
+            if(head1.data <= head2.data) {
+                temp.next = head1;
+                head1 = head1.next;
+                temp = temp.next;
+            } else {
+                temp.next = head2;
+                head2 = head2.next;
+                temp = temp.next;
+            }
+        }
+
+        while(head1 != null) {
+            temp.next = head1;
+            head1 = head1.next;
+            temp = temp.next;
+        }
+
+        while(head2 != null) {
+            temp.next = head2;
+            head2 = head2.next;
+            temp = temp.next;
+        }
+
+        return mergedLL.next;
+    }
+
+    public Node mergeSort(Node head) {
+        if(head == null || head.next == null) {
+            return head;
+        }
+
+        //find mid
+        Node mid = getMid(head);
+        //left & right MS
+        Node rightHead = mid.next;
+        mid.next = null;
+        Node newLeft = mergeSort(head);
+        Node newRight = mergeSort(rightHead);
+
+        //merge
+        return merge(newLeft, newRight);
+    }
+
     // function to get size of LinkedList
     public int get_Length(){
 
@@ -300,8 +359,8 @@ public class LinkedList {
         LinkedList ll = new LinkedList();
         ll.addFirst(10);
         ll.addFirst(20);
-        ll.addLast(10);
-        ll.addLast(20);
+        ll.addLast(80);
+        ll.addLast(4);
 
         ll.add_at(2,1000);
 
@@ -313,9 +372,11 @@ public class LinkedList {
         // System.out.println(size);
         // System.out.println(ll.searchKey(100));
         // ll.reverse();
-        ll.remove_NthNode_FromEnd(2);
+        // ll.remove_NthNode_FromEnd(2);
         ll.print();
-        System.out.println("Mid Node : "+ll.findMid(head));
-        System.out.println(ll.checkPalindrome());
+        // System.out.println("Mid Node : "+ll.findMid(head));
+        // System.out.println(ll.checkPalindrome());
+        ll.head = ll.mergeSort(head);
+        ll.print();
     }
 }
