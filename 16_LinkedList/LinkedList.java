@@ -209,6 +209,58 @@ public class LinkedList {
         return true;
     }
 
+    // function to detect cycle in LL
+    public boolean hasCycle(){
+        Node slow = head;
+        Node fast = head;
+
+        while(fast != null && fast.next != null){
+            slow = slow.next;
+            fast = fast.next.next;
+
+            if(slow == fast){
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    // function to remove cycle in LL
+    public void removeCycle(){
+        // Step1 --> Detect Cycle
+        Node slow = head;
+        Node fast = head;
+        boolean cycle = false;
+
+        while(fast != null && fast.next != null){
+            slow = slow.next;
+            fast = fast.next.next;
+
+            if(fast == slow){
+                cycle = true;
+                break;
+            }
+        }
+
+        if(cycle == false){
+            return;
+        }
+        // Step2 --> find meeting point
+        slow = head;
+        Node prev = null;
+
+        while(slow!=fast){
+            slow = slow.next;
+            prev = fast;
+            fast = fast.next;
+        }
+
+        // Step3 --> remove cycle --> last.next = null
+        prev.next = null; // prev is the last node of LL 
+        
+    }
+
     // function to get size of LinkedList
     public int get_Length(){
 
