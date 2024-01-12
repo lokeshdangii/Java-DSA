@@ -108,6 +108,107 @@ public class LinkedList {
         tail = tmp;
     }
 
+    // function to search for a key in LinkedList
+    public int searchKey(int key){
+        if(size == 0){
+            System.out.println("LL is empty");
+        }
+        Node tmp = head;
+        for(int i=0;i<size;i++){
+            if(tmp.data == key){
+                return i;
+            }
+            tmp = tmp.next;
+        }
+
+        return -1; // if key not found
+    }
+
+    // function to remove nth node from end of Linked List
+    public void remove_NthNode_FromEnd(int n){
+        int len = size;
+
+        if(len == 0){
+            System.out.println("LL is empty");
+        }else if(len ==1){
+            head = tail = null;
+        }
+
+        Node tmp = head;
+        for(int i=1;i<len-n;i++){
+            tmp = tmp.next;
+        }
+
+        tmp.next = tmp.next.next;
+    }
+
+    // function to reverse a LinkedList
+    public void reverse(){
+        // initializing three variable prev, next and current
+        Node prev = null;
+        Node curr = head;      // Node curr = tail =  head;
+        Node next;
+
+        while(curr != null){
+            next = curr.next;   // step1
+            curr.next = prev;   // step2
+            prev = curr;        // step3
+            curr = next;        // step4
+        }
+
+        head = prev;    
+    }
+
+    // function to get mid of the LL --> Slow-Fast Approach
+    public Node findMid(Node head){ 
+        Node slow = head;
+        Node fast = head;
+
+        while(fast != null && fast.next != null){
+            slow = slow.next; //+1
+            fast = fast.next.next; //+2
+        }
+        System.out.println("Mid node data : " + slow.data);
+        return slow;
+    }
+
+    // function to check LL is palindrome or not
+    public boolean checkPalindrome(){
+        // corner case --> null LL or single node LL will always be palindrome
+        if(head == null || head.next == null){
+            return true;
+        }
+
+        // Step1 --> findMid
+        Node midNode = findMid(head);
+
+        // Step2 --> reverse LL from midNode
+        Node prev = null;
+        Node curr = midNode;
+        Node next;
+
+        while(curr != null){
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+
+        Node right = prev;  // right half head
+        Node left = head;
+
+        // Step3 --> cheking left and right part
+        while(right!=null){
+            if(left.data != right.data){
+                return false;
+            }
+            left = left.next;
+            right = right.next;
+        }
+
+        return true;
+    }
+
     // function to get size of LinkedList
     public int get_Length(){
 
@@ -147,16 +248,22 @@ public class LinkedList {
         LinkedList ll = new LinkedList();
         ll.addFirst(10);
         ll.addFirst(20);
-        ll.addLast(30);
-        ll.addLast(40);
+        ll.addLast(10);
+        ll.addLast(20);
 
         ll.add_at(2,1000);
 
         ll.print();
-        System.out.println(ll.get_Length());
+        // System.out.println(ll.get_Length());
         // ll.removeFirst(ll.get_Length());
-        ll.removeLast(size);
+        // ll.removeLast(size);
+        // ll.print();
+        // System.out.println(size);
+        // System.out.println(ll.searchKey(100));
+        // ll.reverse();
+        ll.remove_NthNode_FromEnd(2);
         ll.print();
-        System.out.println(size);
+        System.out.println("Mid Node : "+ll.findMid(head));
+        System.out.println(ll.checkPalindrome());
     }
 }
