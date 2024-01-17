@@ -13,17 +13,29 @@ public class S00_Stack_Array {
 
 
         public void push(int x){
+            if(top == cap-1){
+                System.out.println("Stack Overflow --> Stack is full....!");
+                return;
+            }
             top++;
             arr[top] = x;
         }
 
         public int pop(){
+            if(top == -1){
+                System.out.println("Stack Underflow --> Stack is Empty....!");
+                return Integer.MIN_VALUE;
+            }
             int res = arr[top];
             top--;
             return res;
         }
 
         public int peek(){
+            if(top == -1){
+                System.out.println("Stack Underflow --> Stack is Empty....!");
+                return Integer.MIN_VALUE;
+            }
             return arr[top];
         }
 
