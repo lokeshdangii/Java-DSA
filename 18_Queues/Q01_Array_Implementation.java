@@ -1,5 +1,4 @@
 public class Q01_Array_Implementation {
-    
 
     static class Queue{
         static int arr[];
