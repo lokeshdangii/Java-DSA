@@ -27,6 +27,7 @@ public class Q03_LL_Implementation {
         public static void enqueue(int data){
             Node newNode = new Node(data);
 
+            // when no element --> LL is empty
             if(head == null){
                 head = tail = newNode;
                 return;
