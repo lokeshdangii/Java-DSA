@@ -1,10 +1,10 @@
 public class Q01_Array_Implementation {
+    
 
     static class Queue{
         static int arr[];
         static int size;
         static int rear;
-
 
         Queue(int n){
             arr = new int[n];
@@ -18,7 +18,7 @@ public class Q01_Array_Implementation {
         }
 
         // add  --> enqueue
-        public static void add(int data){
+        public static void enqueue(int data){
             if(rear == size-1){
                 System.out.println("Queue is full");
                 return;
@@ -29,7 +29,7 @@ public class Q01_Array_Implementation {
         }
 
         // remove --> dequeue
-        public static int remove(){
+        public static int dequeue(){
 
             if(rear == -1){
             System.out.println("Queue is empty");
@@ -45,7 +45,7 @@ public class Q01_Array_Implementation {
         }
 
         public static int peek(){
-            if(rear == -1){
+            if(isEmpty()){
                 System.out.println("Queue is empty");
                 return -1;
                 }
@@ -54,17 +54,16 @@ public class Q01_Array_Implementation {
         }
     }
 
-    
     public static void main(String[] args) {
         Queue q = new Queue(5);
-        q.add(1);
-        q.add(2);
-        q.add(3);
+        q.enqueue(1);
+        q.enqueue(2);
+        q.enqueue(3);
         
 
         while(!q.isEmpty()){
             System.out.println(q.peek());
-            q.remove();
+            q.dequeue()();
         }
 
         System.out.println(q.isEmpty());
