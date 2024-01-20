@@ -9,7 +9,7 @@ public class Q04_Queue_JCF {
         Queue<Integer> q = new LinkedList<>();
 
         //Implementation using LinkedList class
-        // Queue<Integer> = new LinkedList<>();
+        // Queue<Integer> = new ArrayDeque<>();
 
         q.add(2);
         q.add(4);
