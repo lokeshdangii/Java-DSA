@@ -1,6 +1,6 @@
 import java.util.Stack;
 
-public class S06_Stack_Sorting2 {
+public class S06_Stack_Sorting {
     
     public static void main(String[] args) {
         Stack<Integer> s1 = new Stack<>();   
