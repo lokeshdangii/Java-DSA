@@ -62,7 +62,7 @@ public class Q01_Array_Implementation {
 
         while(!q.isEmpty()){
             System.out.println(q.peek());
-            q.dequeue()();
+            q.dequeue(); 
         }
 
         System.out.println(q.isEmpty());
