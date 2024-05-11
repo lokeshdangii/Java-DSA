@@ -50,11 +50,11 @@ public class D01_Array_Implementation {
                 return;
             }
 
-            // if(isEmpty()){
-            //     arr[0] = data;
-            //     size++;
-            //     return;
-            // }
+            if(isEmpty()){
+                arr[0] = data;
+                size++;
+                return;
+            }
 
             arr[size] = data;
             size++;
