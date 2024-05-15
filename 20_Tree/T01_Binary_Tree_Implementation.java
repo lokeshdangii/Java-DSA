@@ -20,6 +20,24 @@ public class T01_Binary_Tree_Implementation {
         }
     }
 
+    // Preorder Traversal
+    public static void preorder(Node root){
+        if(root!=null){
+            System.out.print(root.data + " ");
+            preorder(root.left);
+            preorder(root.right);
+        }
+    }
+
+
+    public static void postorder(Node root){
+        if(root!=null){
+            postorder(root.left);
+            postorder(root.right);
+            System.out.print(root.data + " ");
+        }
+    }
+
     public static void main(String[] args) {
         Node root = new Node(10);
         root.left = new Node(20);
@@ -27,6 +45,10 @@ public class T01_Binary_Tree_Implementation {
         root.left.left = new Node(40);
 
         inorder(root);
+        System.out.println();
+        preorder(root);
+        System.out.println();
+        postorder(root);
     }
 
 }
