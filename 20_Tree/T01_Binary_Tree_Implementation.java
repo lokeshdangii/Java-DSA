@@ -20,7 +20,7 @@ public class T01_Binary_Tree_Implementation {
         }
     }
 
-    // Preorder Traversal
+    // Preorder Traversal --> TC and Auxillary Space = same as Inorder
     public static void preorder(Node root){
         if(root!=null){
             System.out.print(root.data + " ");
@@ -29,7 +29,7 @@ public class T01_Binary_Tree_Implementation {
         }
     }
 
-
+    // Postorder Traversal --> TC = Theta(n) and Auxillary Space = O(n)
     public static void postorder(Node root){
         if(root!=null){
             postorder(root.left);
