@@ -67,7 +67,8 @@ public class T01_Binary_Tree_Implementation {
         }
     }
 
-    // Level order traversal (BFS)  TC = O(n) 
+    // Level order traversal (BFS)  TC = O(n) SC --> width of a Binary Tree
+    // Level order uses queue and is a iterative approach whereas other traversal follows recusive approach
     public static void levelOrder(Node root){  // line by line
         if(root == null){
             return;
@@ -100,6 +101,7 @@ public class T01_Binary_Tree_Implementation {
         }
     }
 
+    // Number of nodes in a Binary Tree 
     public static int countofNode(Node root){ //left root right
         if(root == null){
             return 0;
@@ -111,6 +113,7 @@ public class T01_Binary_Tree_Implementation {
         return leftCount + rightCount + 1;
     }
 
+    // sum of nodes in BT
     public static int sumofNode(Node root){ //left root right
         if(root == null){
             return 0;
@@ -119,6 +122,36 @@ public class T01_Binary_Tree_Implementation {
         int leftSum = sumofNode(root.left);
         int rightSum = sumofNode(root.right);
         return leftSum + rightSum + root.data;
+    }
+
+    // Maximum in Binary Tree
+    public static int getMax(Node root){
+        if(root == null){
+            return Integer.MIN_VALUE;
+        }else{
+            return Math.max(root.data,Math.max(getMax(root.left), getMax(root.right)));
+        }
+    }
+
+    // Minimum in Binary Tree
+    public static int getMin(Node root){
+        if(root == null){
+            return Integer.MAX_VALUE;
+        }else{
+            return Math.min(root.data,Math.min(getMin(root.left), getMin(root.right)));
+        }
+    }
+
+    // Diameter of Binary Tree  --> Not fully correct
+    static int res = 0;
+    public static int diameter(Node root){
+        if(root == null){
+            return 0;
+        }
+        int lh = diameter(root.left);
+        int rh = diameter(root.right);
+        res = Math.max(res, 1+lh+rh);
+        return Math.max(lh,rh) + 1;
     }
 
     public static void main(String[] args) {
@@ -140,9 +173,13 @@ public class T01_Binary_Tree_Implementation {
         // printKDistanceNode(root, 2);
         // levelOrder(root);
 
-        System.out.println(countofNode(root));
+        // System.out.println(countofNode(root));
+        // System.out.println("sum of nodes : "+ sumofNode(root));
 
-        System.out.println("sum of nodes : "+ sumofNode(root));
+        // System.out.println(getMax(root));
+        // System.out.println(getMin(root));
+
+        System.out.println(diameter(root));
 
     }
 
