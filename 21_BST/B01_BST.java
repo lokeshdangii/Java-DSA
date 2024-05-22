@@ -61,6 +61,19 @@ public class B01_BST {
         }
         return false;
     }
+
+    // Insert in BST --> Recursive
+    public static Node insert(Node root, int ele){
+        if(root == null){
+            return new Node(ele);
+        }
+        if(root.data > ele){
+            root.left = insert(root.left, ele);
+        }else{
+            root.right = insert(root.right, ele); 
+        }
+        return root;
+    }
     public static void main(String[] args) {
         Node root = new Node(50);
         root.left = new Node(20);
@@ -71,8 +84,12 @@ public class B01_BST {
         root.right.left = new Node(60);
         root.right.right = new Node(80);
 
-        // inorder(root);
-        System.out.println(search(root, 70));
-        System.out.println(Search(root, 70));
+        inorder(root);
+        insert(root, 12);
+        System.out.println();
+        inorder(root);
+        // System.out.println(search(root, 70));
+        // System.out.println(Search(root, 70));
+
     }
 }
