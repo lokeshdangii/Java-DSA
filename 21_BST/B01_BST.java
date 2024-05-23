@@ -74,6 +74,42 @@ public class B01_BST {
         }
         return root;
     }
+
+    // this function is not good to find the successor in general. It can only be used to find the successor when a tree have a right subtree in the delete function.
+    // that's why it is only used in the third case in the delete function.
+    public static Node getSuccessor(Node root){
+        Node curr = root.right;
+        while (curr != null && curr.left != null) {
+            curr = curr.left;
+        }
+
+        return curr;
+    }
+
+    // Delete in BST --> TC:- O(h), SC:-O(h) i.e height can go upto n when a tree is completely skewed. --> when all tree nodes are in increasing or decreasing order.
+    public static Node delete(Node root, int ele){
+        if(root == null){ 
+            return null;
+        }
+
+        if(root.data > ele){
+            root.left = delete(root.left, ele);
+        }else if (root.data < ele){
+            root.right = delete(root.right, ele); 
+        }else{ // case to handle when root is to delete
+            // when root have only one childern we will return that children's root and our main root will be deleted 
+            if(root.left == null){  
+                return root.right;
+            }else if (root.right == null) {
+                return root.left;
+            }else{ // when root have both childrens we have to find the successor which can be a good fit as a new root in the tree
+                Node succ = getSuccessor(root);
+                root.data = succ.data; // this will store the new successor data in the root and then we will cal the delete function with ele as succ.data for the right subtree which will remove that successor node 
+                root.right = delete(root.right, succ.data);
+            }
+        }
+        return root;
+    }
     public static void main(String[] args) {
         Node root = new Node(50);
         root.left = new Node(20);
@@ -85,11 +121,13 @@ public class B01_BST {
         root.right.right = new Node(80);
 
         inorder(root);
-        insert(root, 12);
+        // insert(root, 12);
         System.out.println();
-        inorder(root);
         // System.out.println(search(root, 70));
         // System.out.println(Search(root, 70));
+
+        delete(root, 70);
+        inorder(root);
 
     }
 }
