@@ -112,6 +112,10 @@ public class H01_Implementaion {
             }
         }
 
+        public boolean isEmpty(){
+            return size == 0;
+        }
+
         public void heapSort(int arr[], int n){
             while(n!=1){
                 swap(1,n);
