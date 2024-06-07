@@ -2,9 +2,15 @@ import java.util.*;
 public class G01_Implementation{
 
     // addEdge in Graph
-    static void addEdge(ArrayList<ArrayList<Integer>> adj, int u, int v){
-        adj.get(u).add(v);
-        adj.get(v).add(u);
+    static void addEdge(ArrayList<ArrayList<Integer>> adj, int u, int v, boolean direction){
+
+        if(direction){
+            adj.get(u).add(v);
+        }else{
+            adj.get(u).add(v);
+            adj.get(v).add(u);
+        }
+        
     }
 
     // print Graph
@@ -79,27 +85,73 @@ public class G01_Implementation{
         }
     }
 
+    // Topological Sorting
+    // --> TS is a Linear ordering of vertices such that for edge (u->v) u comes before v in that ordering
+    // Toplogical sorting can only be applied on DAG (Directed Acyclic Graph)
+    // Topological Sort me pehli node kisi pr depend nhi krti h 
+    // TS --> by DFS
+    static void topologicalSortDFS(int src, boolean visited[], Stack<Integer> s, ArrayList<ArrayList<Integer>> adj ){
+        visited[src] = true;
+
+        for(int nbr : adj.get(src)){
+            if(visited[nbr] == false){
+                topologicalSortDFS(nbr, visited, s, adj);
+            }
+        }
+
+        s.push(src);
+    }
+
+    // TS --> by BFS
+    // jis bhi node ki indegree 0 h wo queue me push hogi iska matlab jo bhi node independent hogi queue me sirf wahi push hogi
+    static void topologicalSortBFS()
+
     public static void main(String[] args) {
-        int V=7;
+        int V=8;
         ArrayList<ArrayList<Integer>> adj = new ArrayList<ArrayList<Integer>>(V);
 
         for(int i=0;i<V;i++){
             adj.add(new ArrayList<>());
         }
         
-        addEdge(adj, 0, 1);
-        addEdge(adj, 0, 2);
-        addEdge(adj, 1, 3);
-        addEdge(adj, 2, 3);
+        // addEdge(adj, 0, 1);
+        // addEdge(adj, 0, 2);
+        // addEdge(adj, 1, 3);
+        // addEdge(adj, 2, 3);
 
-        addEdge(adj, 4, 5);
-        addEdge(adj, 4, 6);
-        addEdge(adj, 5, 6);
+        // addEdge(adj, 4, 5);
+        // addEdge(adj, 4, 6);
+        // addEdge(adj, 5, 6);
 
         // printGraph(adj);
         // bfsTraversal(adj, V, 0 );
-        bfsDisconnected(adj, V);
-        dfs(adj, V);
+        // bfsDisconnected(adj, V);
+        // dfs(adj, V);
+
+        addEdge(adj, 0, 1,true);
+        addEdge(adj, 1, 2,true);
+        addEdge(adj, 2, 3,true);
+        addEdge(adj, 3, 4,true);
+        addEdge(adj, 3, 5,true);
+        addEdge(adj, 4, 6,true);
+        addEdge(adj, 5, 6,true);
+        addEdge(adj, 6, 7,true);
+        
+        
+        boolean visited [] = new boolean[V];
+        Stack<Integer> s = new Stack<>();
+
+        for(int node=0;node<V;node++){
+            if(!visited[node]){
+                topologicalSortDFS(node, visited, s, adj);
+            }
+        }
+
+
+        System.out.println(".....Printing Topological Sort order .....");
+        while(!s.isEmpty()){
+            System.out.print(s.pop() + " ");
+        }
 
     }
 }
