@@ -5,8 +5,8 @@ using namespace std;
 // } Driver Code Ends
 class Solution {
   public:
-    // Function to detect cycle in an undirected graph.
     
+    // Function to detect cycle in an undirected graph.
     bool solve(int src,unordered_map<int,bool>& visited,vector<int> adj[]) {
         queue<int> q;
       
