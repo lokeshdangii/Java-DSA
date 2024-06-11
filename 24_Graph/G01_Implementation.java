@@ -85,10 +85,11 @@ public class G01_Implementation{
         }
     }
 
-    // Topological Sorting
+    // Topological Sorting --> Kahn's Algorithm
     // --> TS is a Linear ordering of vertices such that for edge (u->v) u comes before v in that ordering
-    // Toplogical sorting can only be applied on DAG (Directed Acyclic Graph)
+    // Toplogical sorting can only be applied on DAG (Directed Acyclic Graph)  --> if applied on cyclic graph all elements will not be processed. --> TS is used to detect a cycle in a directed graph
     // Topological Sort me pehli node kisi pr depend nhi krti h 
+
     // TS --> by DFS
     static void topologicalSortDFS(int src, boolean visited[], Stack<Integer> s, ArrayList<ArrayList<Integer>> adj ){
         visited[src] = true;
@@ -104,7 +105,79 @@ public class G01_Implementation{
 
     // TS --> by BFS
     // jis bhi node ki indegree 0 h wo queue me push hogi iska matlab jo bhi node independent hogi queue me sirf wahi push hogi
-    static void topologicalSortBFS()
+    static void topologicalSortBFS(ArrayList<ArrayList<Integer>> adj){
+
+        Queue<Integer> q = new LinkedList<>();
+        HashMap<Integer,Integer> hm = new HashMap<>();  // this map stores the indegree of node i.e hm <=> indegree
+
+
+        // Initialize the indegree of each node to 0
+        for (int i = 0; i < adj.size(); i++) {
+            hm.put(i, 0);
+        }
+
+        // storing the indegree of each node in the map 
+        for(int i=0;i<adj.size();i++){
+            for(int j=0;j<adj.get(i).size();j++){
+                hm.put(adj.get(i).get(j), hm.getOrDefault(adj.get(i).get(j), 0) + 1);
+            }  
+        }
+        // System.out.println(hm);
+
+        // Now push all the node with indegree zero in the queue
+        for(int i=0;i<hm.size();i++){
+            if(hm.get(i) == 0){
+                q.add(i); 
+            }
+        }
+
+        // Now BFS concept comes --> BFS chalate h
+        while(!q.isEmpty()){
+            int key = q.poll();
+            System.out.print(key + ", ");
+
+            for(int i=0;i<adj.get(key).size();i++){
+                hm.put(adj.get(key).get(i), hm.get(adj.get(key).get(i))-1);
+
+                if(hm.get(adj.get(key).get(i)) == 0){
+                    q.add(adj.get(key).get(i));
+                }
+            }
+        }
+    }
+
+    static void shortestPathBFS(int V,int src, int dest, ArrayList<ArrayList<Integer>> adj){
+        Queue<Integer> q = new LinkedList<>();
+        boolean visited[] = new boolean[V];
+        int parent[] = new int[V];
+
+        // initially push src in q
+        q.add(src);
+        visited[src] = true;
+        parent[src] = -1;
+
+        while (!q.isEmpty()) {
+            int front = q.poll();
+
+            for(int nbr : adj.get(front)){
+                if(!visited[nbr]){
+                    q.add(nbr);
+                    visited[nbr] = true;
+                    parent[nbr] = front;
+                }
+            }
+        }
+
+        ArrayList<Integer> ans = new ArrayList<>();
+        while(dest != -1){
+            ans.add(dest);
+            dest = parent[dest];
+        }
+
+        System.out.println(ans);
+    }
+
+
 
     public static void main(String[] args) {
         int V=8;
@@ -128,30 +201,47 @@ public class G01_Implementation{
         // bfsDisconnected(adj, V);
         // dfs(adj, V);
 
-        addEdge(adj, 0, 1,true);
-        addEdge(adj, 1, 2,true);
-        addEdge(adj, 2, 3,true);
-        addEdge(adj, 3, 4,true);
-        addEdge(adj, 3, 5,true);
-        addEdge(adj, 4, 6,true);
-        addEdge(adj, 5, 6,true);
-        addEdge(adj, 6, 7,true);
+        // addEdge(adj, 0, 1,true);
+        // addEdge(adj, 1, 2,true);
+        // addEdge(adj, 2, 3,true);
+        // addEdge(adj, 2, 4,true);
+        // addEdge(adj, 3, 5,true);
+        // addEdge(adj, 4, 5,true);
+        // addEdge(adj, 5, 6,true);
+        // addEdge(adj, 5, 7,true);
         
         
-        boolean visited [] = new boolean[V];
-        Stack<Integer> s = new Stack<>();
+        // -------------------------- Topological sort DFS Driver code  ------------------------------------
 
-        for(int node=0;node<V;node++){
-            if(!visited[node]){
-                topologicalSortDFS(node, visited, s, adj);
-            }
-        }
+        // boolean visited [] = new boolean[V];
+        // Stack<Integer> s = new Stack<>();
+
+        // for(int node=0;node<V;node++){
+        //     if(!visited[node]){
+        //         topologicalSortDFS(node, visited, s, adj);
+        //     }
+        // }
 
 
-        System.out.println(".....Printing Topological Sort order .....");
-        while(!s.isEmpty()){
-            System.out.print(s.pop() + " ");
-        }
+        // System.out.println(".....Printing Topological Sort order .....");
+        // while(!s.isEmpty()){
+        //     System.out.print(s.pop() + " ");
+        // }
+
+        //  --------------------------------------------------------------------------------------------------
+
+        // topologicalSortBFS(adj);
+
+        addEdge(adj, 0, 5,false);
+        addEdge(adj, 5, 4,false);
+        addEdge(adj, 4, 3,false);
+        addEdge(adj, 0, 6,false);
+        addEdge(adj, 6, 3,false);
+        addEdge(adj, 0, 1,false);
+        addEdge(adj, 1, 2,false);
+        addEdge(adj, 2, 3,false);
+
+        shortestPathBFS(V, 0, 5, adj);
 
     }
 }
