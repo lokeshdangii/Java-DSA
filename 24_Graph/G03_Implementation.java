@@ -107,7 +107,7 @@ public class G03_Implementation {
     }
 
 
-    // Dijkstra 
+    // Dijkstra --> SSSP --> Single Source Shortest Path
     // Dijkstra doesn't work on unreachable node and on negative weights as well as on negative cycle
     static void diskstraShortestDistance(int V,ArrayList<ArrayList<Edge>> adj, int src, int dest){
         int dist[] = new int[V+1];
