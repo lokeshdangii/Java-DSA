@@ -1,7 +1,24 @@
-
 // Recursion is a method of solving a computation problem where solution depened on solutions to smaller instances of the same problem.
 
-public class Basic {
+// To understand recursion you first need to understand recursion [Don't understand recursion only trust on it]
+// Keep faith and trust in recursion instead of going in depth of it or any problem 
+
+/*
+    Recursion is a trust btw sundar and sundari [Sundar <=Trust=> Sundari]
+
+ Recursion batata h :-
+    --> or kitna chalna h (Steps -> Calls())
+    --> kab rukna h (Base Condition/Case)
+    --> Left/Right kidhar moodna h (Processing)
+
+
+Recursion involves:-
+    --> Base Case (Mandatory)
+    --> Recursive calls (Mandatory)
+    --> Processing (Optional)
+ */
+
+public class R01_Recursion {
 
     public static void printDec(int n){
         if(n==1){
