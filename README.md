@@ -89,11 +89,11 @@ To explore the programs from this repository:
 
 1. Clone the repository to your local machine using:-
    
-       git clone https://github.com/lokeshdangii/Java.git
+       git clone https://github.com/lokeshdangii/Java-DSA.git
        
 3. Navigate to the cloned Java directory:-
 
-       cd Path_to_Java/Java
+       cd Java-DSA
      
 5. Compile the Java file:-
 
