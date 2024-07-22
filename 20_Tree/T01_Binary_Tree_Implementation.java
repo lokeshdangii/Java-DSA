@@ -13,8 +13,8 @@ public class T01_Binary_Tree_Implementation {
         } 
     }    
 
-    static int count = 0;
-    static int sum = 0;
+    // static int count = 0;
+    // static int sum = 0;
     // Inorder Traversal --> TC = O(n)  & SC = O(h) h --> height of tree
     public static void inorder(Node root){ //left root right
         if(root != null){

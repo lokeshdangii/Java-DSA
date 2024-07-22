@@ -63,7 +63,7 @@ public class H01_Implementaion {
                 int leftIndex = 2*index;
                 int rightIndex = 2*index +1;
 
-                // find out sabse bado kon among the three
+                // find out sabse bada kon among the three
                 int largestKaIndex = index;
                 
                 if(leftIndex <= size && arr[largestKaIndex] < arr[leftIndex]){
